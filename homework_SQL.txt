@@ -1,0 +1,30 @@
+--建立名稱為homework_SQL的資料庫, 字元集採用utf-8
+create database homework_SQL default character set utf8;
+
+--切換使用homework_SQL資料庫
+use homework_SQL;
+
+--建立名稱為family_account的資料表
+create table family_account
+(
+    Family_AccountID int auto_increment not null primary key, 
+    Family_Name char(10) not null, 
+    Item varchar(30) not null, 
+    Income int null, 
+    Pay int null
+);
+
+--修改Item欄位的資料型態, varchar(30)改為varchar(20)
+alter table family_account modify Item varchar(20) not null;
+
+--新增4筆資料內容
+insert into family_account values (1, '爸爸', '薪水', '100000', '');
+insert into family_account values (2, '媽媽', '買菜', '', '3000');
+insert into family_account values (3, '哥哥', '治裝費', '', '5000');
+insert into family_account values (4, '弟弟', '治裝費', '', '5000');
+
+--修改第4筆資料, 將Pay的值 '5000' 改為 '6000'
+Update family_account set Pay = '6000' where Family_AccountID = 4;
+
+--刪除第4筆資料
+delete from family_account where Family_AccountID = 4;
